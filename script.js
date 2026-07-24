@@ -4,6 +4,8 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ========================================
     // NAVBAR SCROLL EFFECT
     // ========================================
@@ -179,8 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // PARALLAX EFFECT FOR ORBS (throttled)
     // ========================================
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     if (!prefersReducedMotion) {
         let ticking = false;
         const orbs = document.querySelectorAll('.gradient-orb');
@@ -268,14 +268,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // PAGE LOAD ANIMATION
     // ========================================
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    if (document.readyState === 'complete') {
+    if (prefersReducedMotion) {
         document.body.style.opacity = '1';
     } else {
-        window.addEventListener('load', () => {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+        if (document.readyState === 'complete') {
             document.body.style.opacity = '1';
-        });
+        } else {
+            window.addEventListener('load', () => {
+                document.body.style.opacity = '1';
+            });
+        }
     }
 
     // ========================================
