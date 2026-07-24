@@ -60,24 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Close mobile nav when tapping outside
+    document.addEventListener('click', (e) => {
+        if (!navLinksContainer.contains(e.target) && !navToggle.contains(e.target) && navLinksContainer.classList.contains('active')) {
+            navLinksContainer.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+
     // ========================================
     // SCROLL ANIMATIONS (Intersection Observer)
     // ========================================
     const animateElements = document.querySelectorAll('.animate-on-scroll');
 
-    const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                animationObserver.unobserve(entry.target);
-            }
+    if (prefersReducedMotion) {
+        animateElements.forEach(el => el.classList.add('visible'));
+    } else {
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
 
-    animateElements.forEach(el => animationObserver.observe(el));
+        animateElements.forEach(el => animationObserver.observe(el));
+    }
 
     // ========================================
     // SKILL BAR ANIMATIONS
@@ -107,15 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = greeting.textContent;
         greeting.textContent = '';
         greeting.style.visibility = 'visible';
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                greeting.textContent += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        };
-        setTimeout(typeWriter, 500);
+        if (prefersReducedMotion) {
+            greeting.textContent = text;
+        } else {
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    greeting.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            setTimeout(typeWriter, 500);
+        }
     }
 
     // ========================================
@@ -161,16 +177,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // PARALLAX EFFECT FOR ORBS
+    // PARALLAX EFFECT FOR ORBS (throttled)
     // ========================================
-    const orbs = document.querySelectorAll('.gradient-orb');
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        orbs.forEach((orb, index) => {
-            const speed = (index + 1) * 0.02;
-            orb.style.transform = `translateY(${scrollY * speed}px)`;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+        let ticking = false;
+        const orbs = document.querySelectorAll('.gradient-orb');
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    orbs.forEach((orb, index) => {
+                        const speed = (index + 1) * 0.02;
+                        orb.style.transform = `translateY(${scrollY * speed}px)`;
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
-    });
+    }
 
     // ========================================
     // COUNTER ANIMATION FOR STATS
