@@ -3,15 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Zeeshan | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Primary SEO Meta Tags -->
+    <title>Muhammad Zeeshan | CSE Student, Software Developer &amp; AI/ML Portfolio | MUET</title>
+    <meta name="description" content="Muhammad Zeeshan — Computer Systems Engineering student at MUET, Jamshoro. Portfolio showcasing 8+ projects in C++, Java, Python, 3 internships, 14 certifications in AI/ML &amp; Data Science. Open to opportunities.">
+    <meta name="keywords" content="Muhammad Zeeshan, portfolio, CSE student, MUET, Mehran University, software developer, C++, Java, Python, AI, machine learning, data science, internships, certifications, Jamshoro, Pakistan">
+    <meta name="author" content="Muhammad Zeeshan">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://zeeshan1616.github.io/Muhammad-Zeeshan/">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="msapplication-TileColor" content="#0d0d0d">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zeeshan1616.github.io/Muhammad-Zeeshan/">
+    <meta property="og:title" content="Muhammad Zeeshan | CSE Student, Software Developer &amp; AI/ML Portfolio">
+    <meta property="og:description" content="Portfolio of Muhammad Zeeshan — CSE student at MUET with 8+ projects, 3 internships, and 14 certifications in AI/ML, Data Science, and Software Development.">
+    <meta property="og:image" content="https://zeeshan1616.github.io/Muhammad-Zeeshan/picture.png">
+    <meta property="og:image:alt" content="Muhammad Zeeshan — Software Developer Portfolio">
+    <meta property="og:site_name" content="Muhammad Zeeshan Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://zeeshan1616.github.io/Muhammad-Zeeshan/">
+    <meta name="twitter:title" content="Muhammad Zeeshan | CSE Student, Software Developer &amp; AI/ML Portfolio">
+    <meta name="twitter:description" content="Portfolio of Muhammad Zeeshan — CSE student at MUET with 8+ projects, 3 internships, and 14 certifications in AI/ML &amp; Data Science.">
+    <meta name="twitter:image" content="https://zeeshan1616.github.io/Muhammad-Zeeshan/picture.png">
+    <meta name="twitter:image:alt" content="Muhammad Zeeshan — Software Developer Portfolio">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Zeeshan",
+        "url": "https://zeeshan1616.github.io/Muhammad-Zeeshan/",
+        "image": "https://zeeshan1616.github.io/Muhammad-Zeeshan/picture.png",
+        "description": "Computer Systems Engineering student at MUET, Jamshoro. Software developer proficient in C++, Java, Python with experience in AI/ML and Data Science.",
+        "jobTitle": "Computer Systems Engineering Student",
+        "affiliation": {
+            "@type": "Organization",
+            "name": "Mehran University of Engineering and Technology",
+            "url": "https://www.muet.edu.pk/"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jamshoro",
+            "addressRegion": "Sindh",
+            "addressCountry": "PK"
+        },
+        "email": "mzeeshan44203@gmail.com",
+        "sameAs": [
+            "https://www.linkedin.com/in/muhammad-zeeshan-0235b4385",
+            "https://github.com/Zeeshan1616"
+        ],
+        "knowsAbout": [
+            "C++", "Java", "Python", "SQL", "HTML", "CSS",
+            "Object-Oriented Programming", "Data Structures", "Algorithms",
+            "Artificial Intelligence", "Machine Learning", "Data Science",
+            "Software Development", "Web Development"
+        ],
+        "hasCredential": [
+            "Introduction to AI", "Introduction to Modern AI", "AI Fluency",
+            "AI for Beginners", "Google AI Essentials",
+            "Machine Learning for Beginners", "Basics of ML Algorithms",
+            "Basics of Data Science", "Introduction to SQL", "SQL Statements and Indexes",
+            "Introduction to Python", "Introduction to HTML", "Introduction to CSS",
+            "Claude Code in Action", "Effective Leadership", "Communication Skills"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Mehran University of Engineering and Technology",
+            "url": "https://www.muet.edu.pk/"
+        },
+        "nationality": {
+            "@type": "Country",
+            "name": "Pakistan"
+        }
+    }
+    </script>
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
                 <span class="logo-text">MZ.</span>
@@ -33,6 +115,7 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <section class="hero" id="home">
         <div class="hero-bg-effects">
             <div class="gradient-orb orb-1"></div>
@@ -85,7 +168,7 @@
             <div class="hero-image-wrapper animate-on-scroll">
                 <div class="image-glow"></div>
                 <div class="hero-image-container">
-                    <img src="picture.png" alt="Muhammad Zeeshan" class="hero-image" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a,#0d0d0d);font-size:5rem;font-weight:800;color:#00e5ff;&quot;>MZ</div>'">
+                    <img src="picture.png" alt="Muhammad Zeeshan — CSE Student and Software Developer at MUET" class="hero-image" onerror="this.style.display='none';this.parentElement.innerHTML+='<div style=&quot;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a1a,#0d0d0d);font-size:5rem;font-weight:800;color:#00e5ff;&quot;>MZ</div>'">
                     <div class="image-frame"></div>
                 </div>
                 <div class="floating-badge badge-1">
@@ -923,7 +1006,7 @@ zeeshan = MuhammadZeeshan()
                 <div class="linkedin-card">
                     <div class="linkedin-header">
                         <div class="linkedin-avatar">
-                            <img src="picture.png" alt="Muhammad Zeeshan">
+                            <img src="picture.png" alt="Muhammad Zeeshan — LinkedIn Profile">
                         </div>
                         <div class="linkedin-info">
                             <h3>Muhammad Zeeshan</h3>
@@ -1063,7 +1146,9 @@ zeeshan = MuhammadZeeshan()
         </div>
     </section>
 
-    <footer class="footer">
+    </main>
+
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
