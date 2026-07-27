@@ -13,14 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (canvas && !prefersReducedMotion) {
         const ctx = canvas.getContext('2d');
         let particles = [];
-        let mouse = { x: -1000, y: -1000 };
+        let mouse = { x: -1000, y: -1000, active: false };
         let heroSection = document.getElementById('home');
-        let canvasOpacity = 1;
+        let currentOpacity = 1;
+        let targetOpacity = 1;
         let animFrameId;
+        let lastTime = 0;
 
         function resizeCanvas() {
             canvas.width = heroSection.offsetWidth;
-            canvas.height = heroSection.offsetHeight;
+            canvas.height = heroSection.offsetHeight + window.innerHeight * 0.4;
+            canvas.style.height = (heroSection.offsetHeight + window.innerHeight * 0.4) + 'px';
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -28,46 +31,71 @@ document.addEventListener('DOMContentLoaded', () => {
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
+                this.y = Math.random() * heroSection.offsetHeight;
                 this.baseX = this.x;
                 this.baseY = this.y;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.radius = Math.random() * 1.8 + 0.8;
+                this.driftAngle = Math.random() * Math.PI * 2;
+                this.driftSpeed = (Math.random() * 0.002 + 0.001);
+                this.driftRadius = Math.random() * 20 + 10;
+                this.pulsePhase = Math.random() * Math.PI * 2;
+                this.pulseSpeed = Math.random() * 0.02 + 0.01;
             }
 
-            update() {
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const maxDist = 160;
+            update(time) {
+                this.driftAngle += this.driftSpeed;
+                this.pulsePhase += this.pulseSpeed;
 
-                if (dist < maxDist) {
-                    const force = (maxDist - dist) / maxDist;
-                    this.x -= dx * force * 0.03;
-                    this.y -= dy * force * 0.03;
-                } else {
-                    this.x += (this.baseX - this.x) * 0.01;
-                    this.y += (this.baseY - this.y) * 0.01;
+                const driftX = Math.cos(this.driftAngle) * this.driftRadius * 0.01;
+                const driftY = Math.sin(this.driftAngle * 0.7) * this.driftRadius * 0.01;
+
+                if (mouse.active) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 180;
+
+                    if (dist < maxDist && dist > 0) {
+                        const force = Math.pow((maxDist - dist) / maxDist, 2);
+                        this.x -= dx * force * 0.015;
+                        this.y -= dy * force * 0.015;
+                    }
                 }
 
-                this.x += this.vx;
-                this.y += this.vy;
+                this.x += this.vx + driftX;
+                this.y += this.vy + driftY;
 
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+                const margin = 30;
+                if (this.x < -margin) this.x = canvas.width + margin;
+                if (this.x > canvas.width + margin) this.x = -margin;
+                if (this.y < -margin) this.y = heroSection.offsetHeight + window.innerHeight * 0.4 + margin;
+                if (this.y > heroSection.offsetHeight + window.innerHeight * 0.4 + margin) this.y = -margin;
+
+                this.x += (this.baseX - this.x) * 0.003;
+                this.y += (this.baseY - this.y) * 0.003;
             }
 
             draw() {
+                const pulse = 0.7 + Math.sin(this.pulsePhase) * 0.3;
+                const r = this.radius * pulse;
+                const alpha = 0.45 * pulse;
+
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 229, 255, ' + (0.5 * canvasOpacity) + ')';
+                ctx.arc(this.x, this.y, r + 1.5, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 229, 255, ' + (alpha * 0.15) + ')';
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 229, 255, ' + alpha + ')';
                 ctx.fill();
             }
         }
 
         function initParticles() {
-            const count = Math.min(Math.floor((canvas.width * canvas.height) / 12000), 120);
+            const count = Math.min(Math.floor((canvas.width * heroSection.offsetHeight) / 14000), 100);
             particles = [];
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
@@ -76,70 +104,100 @@ document.addEventListener('DOMContentLoaded', () => {
         initParticles();
 
         function drawConnections() {
+            const heroH = heroSection.offsetHeight;
+
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxConn = 130;
 
-                    if (dist < 120) {
-                        const opacity = (1 - dist / 120) * 0.25 * canvasOpacity;
+                    if (dist < maxConn) {
+                        const t = 1 - dist / maxConn;
+                        const opacity = t * t * 0.22;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.strokeStyle = 'rgba(0, 229, 255, ' + opacity + ')';
-                        ctx.lineWidth = 0.6;
+                        ctx.lineWidth = 0.5 + t * 0.3;
                         ctx.stroke();
                     }
                 }
             }
 
-            const maxMouseDist = 200;
+            if (!mouse.active) return;
+
             for (let i = 0; i < particles.length; i++) {
                 const dx = mouse.x - particles[i].x;
                 const dy = mouse.y - particles[i].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < maxMouseDist) {
-                    const opacity = (1 - dist / maxMouseDist) * 0.4 * canvasOpacity;
+                const maxMouse = 220;
+
+                if (dist < maxMouse && dist > 0) {
+                    const t = 1 - dist / maxMouse;
+                    const opacity = t * t * 0.35;
+
+                    const grad = ctx.createLinearGradient(particles[i].x, particles[i].y, mouse.x, mouse.y);
+                    grad.addColorStop(0, 'rgba(0, 229, 255, ' + opacity + ')');
+                    grad.addColorStop(1, 'rgba(118, 255, 3, ' + (opacity * 0.8) + ')');
+
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = 'rgba(118, 255, 3, ' + opacity + ')';
-                    ctx.lineWidth = 0.8;
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 0.6 + t * 0.6;
                     ctx.stroke();
                 }
             }
         }
 
-        function animate() {
+        function animate(time) {
+            const delta = time - lastTime;
+            lastTime = time;
+
+            currentOpacity += (targetOpacity - currentOpacity) * 0.04;
+
+            if (currentOpacity < 0.005) {
+                canvas.style.opacity = 0;
+                animFrameId = requestAnimationFrame(animate);
+                return;
+            }
+
+            canvas.style.opacity = currentOpacity;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
+            particles.forEach(p => { p.update(time); p.draw(); });
             drawConnections();
             animFrameId = requestAnimationFrame(animate);
         }
-        animate();
+        animFrameId = requestAnimationFrame(animate);
 
         heroSection.addEventListener('mousemove', (e) => {
             const rect = heroSection.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
             mouse.y = e.clientY - rect.top;
+            mouse.active = true;
         });
 
         heroSection.addEventListener('mouseleave', () => {
-            mouse.x = -1000;
-            mouse.y = -1000;
+            mouse.active = false;
         });
 
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            const scrollRatio = window.scrollY / heroSection.offsetHeight;
-            if (scrollRatio < 0.7) {
-                canvasOpacity = 1;
-            } else if (scrollRatio < 2.0) {
-                canvasOpacity = 1 - ((scrollRatio - 0.7) / 1.3);
-            } else {
-                canvasOpacity = 0;
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollRatio = window.scrollY / heroSection.offsetHeight;
+                    if (scrollRatio < 0.85) {
+                        targetOpacity = 1;
+                    } else {
+                        const fade = 1 - (scrollRatio - 0.85) / 1.5;
+                        targetOpacity = Math.max(0, Math.min(1, fade));
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
-            canvas.style.opacity = canvasOpacity;
         });
     }
 

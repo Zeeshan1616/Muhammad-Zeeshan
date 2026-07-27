@@ -244,9 +244,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     pointer-events: none;
     z-index: 1;
+    will-change: opacity;
 }
 
 .gradient-orb {
@@ -607,10 +607,10 @@ body {
 .section.about::before {
     content: '';
     position: absolute;
-    top: -80px;
+    top: -120px;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 120px;
     background: linear-gradient(to bottom, transparent, var(--bg-primary, #0d0d0d));
     pointer-events: none;
     z-index: 2;
