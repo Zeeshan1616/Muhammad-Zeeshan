@@ -289,6 +289,102 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             navLinksContainer.classList.remove('active');
             navToggle.classList.remove('active');
+            closeCertModal();
         }
     });
+
+    // ========================================
+    // CERTIFICATE MODAL
+    // ========================================
+    const certModal = document.getElementById('certModal');
+    const certModalTitle = document.getElementById('certModalTitle');
+    const certModalIssuer = document.getElementById('certModalIssuer');
+    const certModalBody = document.getElementById('certModalBody');
+    const certModalVerify = document.getElementById('certModalVerify');
+    const certModalDownload = document.getElementById('certModalDownload');
+    const certModalClose = document.getElementById('certModalClose');
+    let currentZoom = 1;
+    let currentFile = '';
+
+    window.openCertModal = function(btn) {
+        const card = btn.closest('[data-cert-file]');
+        if (!card) return;
+        const file = card.getAttribute('data-cert-file');
+        const name = card.getAttribute('data-cert-name');
+        const issuer = card.getAttribute('data-cert-issuer') || '';
+        const verifyUrl = card.getAttribute('data-verify-url');
+        if (!file) return;
+
+        currentFile = file;
+        currentZoom = 1;
+        certModalTitle.textContent = name || 'Certificate';
+        certModalIssuer.textContent = issuer;
+
+        const existing = certModalBody.querySelector('iframe, img');
+        if (existing) existing.remove();
+
+        const isImage = /\.(png|jpg|jpeg|gif|webp|svg)$/i.test(file);
+        if (isImage) {
+            const img = document.createElement('img');
+            img.src = file;
+            img.alt = name;
+            img.style.transform = 'scale(1)';
+            certModalBody.insertBefore(img, certModalBody.querySelector('.cert-zoom-controls'));
+        } else {
+            const iframe = document.createElement('iframe');
+            iframe.src = file;
+            iframe.title = name;
+            certModalBody.insertBefore(iframe, certModalBody.querySelector('.cert-zoom-controls'));
+        }
+
+        if (verifyUrl) {
+            certModalVerify.href = verifyUrl;
+            certModalVerify.style.display = 'flex';
+        } else {
+            certModalVerify.style.display = 'none';
+        }
+
+        certModalDownload.onclick = function() {
+            const a = document.createElement('a');
+            a.href = file;
+            a.download = file.split('/').pop();
+            a.click();
+        };
+
+        certModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    function closeCertModal() {
+        certModal.classList.remove('active');
+        document.body.style.overflow = '';
+        const existing = certModalBody.querySelector('iframe, img');
+        if (existing) existing.remove();
+        currentZoom = 1;
+    }
+
+    certModalClose.addEventListener('click', closeCertModal);
+    certModal.addEventListener('click', (e) => {
+        if (e.target === certModal) closeCertModal();
+    });
+
+    document.getElementById('certZoomIn').addEventListener('click', () => {
+        currentZoom = Math.min(currentZoom + 0.25, 3);
+        applyZoom();
+    });
+
+    document.getElementById('certZoomOut').addEventListener('click', () => {
+        currentZoom = Math.max(currentZoom - 0.25, 0.5);
+        applyZoom();
+    });
+
+    document.getElementById('certZoomReset').addEventListener('click', () => {
+        currentZoom = 1;
+        applyZoom();
+    });
+
+    function applyZoom() {
+        const el = certModalBody.querySelector('img');
+        if (el) el.style.transform = 'scale(' + currentZoom + ')';
+    }
 });
