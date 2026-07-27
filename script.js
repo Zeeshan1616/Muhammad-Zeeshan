@@ -132,10 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('scroll', () => {
             const scrollRatio = window.scrollY / heroSection.offsetHeight;
-            if (scrollRatio < 0.3) {
+            if (scrollRatio < 0.7) {
                 canvasOpacity = 1;
-            } else if (scrollRatio < 1.2) {
-                canvasOpacity = 1 - ((scrollRatio - 0.3) / 0.9);
+            } else if (scrollRatio < 2.0) {
+                canvasOpacity = 1 - ((scrollRatio - 0.7) / 1.3);
             } else {
                 canvasOpacity = 0;
             }
