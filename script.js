@@ -131,13 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.addEventListener('scroll', () => {
-            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-            const scrollY = window.scrollY + window.innerHeight;
-            if (scrollY > heroBottom) {
-                canvasOpacity = 0;
+            const scrollRatio = window.scrollY / heroSection.offsetHeight;
+            if (scrollRatio < 0.3) {
+                canvasOpacity = 1;
+            } else if (scrollRatio < 1.2) {
+                canvasOpacity = 1 - ((scrollRatio - 0.3) / 0.9);
             } else {
-                const scrollPastHero = window.scrollY / heroSection.offsetHeight;
-                canvasOpacity = Math.max(0, 1 - scrollPastHero * 1.5);
+                canvasOpacity = 0;
             }
             canvas.style.opacity = canvasOpacity;
         });
