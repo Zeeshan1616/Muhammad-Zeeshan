@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Zeeshan — Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0d0d0d;
+            --card: #111111;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --muted: #888888;
+            --cyan: #00e5ff;
+            --green: #76ff03;
+            --pink: #e040fb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .resume-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            background: var(--bg);
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download-bar span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            color: #0d0d0d;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+        }
+
+        .resume-page { padding-top: 80px; }
+
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .contact-row a, .contact-row span {
+            color: var(--muted);
+            font-size: 0.82rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-row a { color: var(--cyan); }
+        .contact-row a:hover { text-decoration: underline; }
+        .contact-row i { font-size: 0.75rem; }
+
+        .section { margin-bottom: 28px; }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cyan);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
+        }
+
+        .item { margin-bottom: 16px; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+        .item-title { font-weight: 700; font-size: 0.95rem; color: #fff; }
+        .item-date { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+        .item-sub { font-size: 0.85rem; color: var(--green); font-weight: 500; margin-bottom: 4px; }
+        .item-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .tag {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: rgba(0, 229, 255, 0.08);
+            color: var(--cyan);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            font-weight: 500;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px 16px;
+        }
+
+        .cert-item {
+            font-size: 0.8rem;
+            color: var(--text);
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cert-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .cert-dot.ai { background: var(--cyan); }
+        .cert-dot.ml { background: var(--green); }
+        .cert-dot.ds { background: var(--pink); }
+        .cert-dot.sql { background: #ff9800; }
+        .cert-dot.code { background: #7c4dff; }
+        .cert-dot.lead { background: #ff5252; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px 30px;
+        }
+
+        .skill-group-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: 6px;
+        }
+
+        .skill-group-list {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .link-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .link-list a {
+            font-size: 0.78rem;
+            color: var(--cyan);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .link-list a:hover { text-decoration: underline; }
+
+        @media print {
+            body { background: #fff; color: #222; }
+            .download-bar { display: none !important; }
+            .resume-page { padding: 20px 40px; max-width: 100%; }
+            .header h1 { -webkit-text-fill-color: #0d7377; background: none; }
+            .section-title { color: #0d7377; }
+            .section-title::after { background: #ccc; }
+            .item-sub { color: #2e7d32; }
+            .item-desc, .contact-row span { color: #555; }
+            .tag { border-color: #ccc; color: #333; background: #f5f5f5; }
+            .cert-dot { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+            .contact-row a { color: #0d7377; }
+            .link-list a { color: #0d7377; }
+        }
+
+        @media (max-width: 700px) {
+            .resume-page { padding: 20px; padding-top: 80px; }
+            .download-bar { padding: 12px 20px; }
+            .two-col { grid-template-columns: 1fr; }
+            .certs-grid { grid-template-columns: 1fr 1fr; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="download-bar">
+        <span>Muhammad Zeeshan — Resume</span>
+        <button class="download-btn" onclick="window.print()">
+            <i class="fas fa-download"></i> Save as PDF
+        </button>
+    </div>
+
+    <div class="resume-page">
+        <div class="header">
+            <h1>MUHAMMAD ZEESHAN</h1>
+            <p class="subtitle">Computer Systems Engineering Student | Software Developer | AI/ML Enthusiast</p>
+            <div class="contact-row">
+                <span><i class="fas fa-map-marker-alt"></i> Jamshoro, Sindh, Pakistan</span>
+                <a href="mailto:mzeeshan44203@gmail.com"><i class="fas fa-envelope"></i> mzeeshan44203@gmail.com</a>
+                <a href="https://linkedin.com/in/muhammad-zeeshan-0235b4385" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/Zeeshan1616" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://zeeshan1616.github.io/Muhammad-Zeeshan/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Engineering — Computer Systems Engineering</span>
+                    <span class="item-date">2025 – 2029 (Expected)</span>
+                </div>
+                <div class="item-sub">Mehran University of Engineering & Technology, Jamshoro</div>
+                <div class="item-desc">Relevant Coursework: Object-Oriented Programming, Data Structures & Algorithms, Database Systems, Artificial Intelligence</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Internships</div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Data Science Intern</span>
+                    <span class="item-date">Upcoming</span>
+                </div>
+                <div class="item-sub">Arch Technologies</div>
+                <div class="item-desc">Selected for a Data Science internship. Eager to apply analytical skills and machine learning knowledge in a professional environment.</div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Python Programming Intern</span>
+                    <span class="item-date">2026</span>
+                </div>
+                <div class="item-sub">DecodeLabs (Virtual)</div>
+                <div class="item-desc">Developed 3 projects: To-Do List App, Expense Tracker with SQLite, and a Cryptographic Random Password Generator. Gained hands-on experience with Python's standard library, file I/O, and security-focused programming.</div>
+                <div class="tags"><span class="tag">Python</span><span class="tag">SQLite</span><span class="tag">Security</span></div>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Java Programming Intern</span>
+                    <span class="item-date">2026</span>
+                </div>
+                <div class="item-sub">CodeAlpha (Virtual)</div>
+                <div class="item-desc">Built 2 desktop applications: Student Grade Tracker (Swing GUI with live statistics & report generation) and Hotel Reservation Management System (dual-portal with persistent storage & payment simulation). Applied OOP principles including encapsulation, inheritance, interfaces, and abstraction.</div>
+                <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">OOP</span><span class="tag">Serialization</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Projects</div>
+            <div class="two-col">
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">C++ Calculator</span>
+                    </div>
+                    <div class="item-desc">Feature-rich calculator with basic arithmetic operations. Demonstrates clean code architecture and user input handling.</div>
+                    <div class="tags"><span class="tag">C++</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/C-Calculator" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Student Grade Tracker</span>
+                    </div>
+                    <div class="item-desc">Desktop app with Swing GUI for faculty to manage students and track grades. Features live statistics, letter grades, and report generation.</div>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">OOP</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/CodeAlpha-Task-1" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Hotel Reservation System</span>
+                    </div>
+                    <div class="item-desc">Full-featured hotel reservation app with dual-portal access (Guest & Admin), persistent storage, and payment simulation.</div>
+                    <div class="tags"><span class="tag">Java</span><span class="tag">Swing</span><span class="tag">Serialization</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/CodeAlpha-Task-2" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">To-Do List App</span>
+                    </div>
+                    <div class="item-desc">Console-based task manager demonstrating Python lists, functions, loops, and enumerate.</div>
+                    <div class="tags"><span class="tag">Python</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/DecodeLabs-Internship/tree/Task-1" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Expense Tracker</span>
+                    </div>
+                    <div class="item-desc">Command-line expense tracker with SQLite persistence, category-based logging, and summary reports.</div>
+                    <div class="tags"><span class="tag">Python</span><span class="tag">SQLite</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/DecodeLabs-Internship/tree/Task-2" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Password Generator & Checker</span>
+                    </div>
+                    <div class="item-desc">Cryptographic password generator with entropy calculation and a strength checker with emoji-driven feedback.</div>
+                    <div class="tags"><span class="tag">Python</span><span class="tag">Security</span></div>
+                    <div class="link-list">
+                        <a href="https://github.com/Zeeshan1616/DecodeLabs-Internship/tree/Task-3" target="_blank"><i class="fab fa-github"></i> Generator</a>
+                        <a href="https://github.com/Zeeshan1616/Python/tree/Password-Checker-version-1" target="_blank"><i class="fab fa-github"></i> Checker</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Student Manager</span>
+                    </div>
+                    <div class="item-desc">Interactive CLI for managing student records — add, remove, search, sort (A-Z), with automatic capitalization.</div>
+                    <div class="tags"><span class="tag">Python</span></div>
+                    <div class="link-list"><a href="https://github.com/Zeeshan1616/Python/tree/Student-Management-System" target="_blank"><i class="fab fa-github"></i> Source</a></div>
+                </div>
+                <div class="item">
+                    <div class="item-header">
+                        <span class="item-title">Portfolio Website</span>
+                    </div>
+                    <div class="item-desc">Personal portfolio with responsive design, AI chatbot, SEO optimization, and dark theme UI.</div>
+                    <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+                    <div class="link-list">
+                        <a href="https://zeeshan1616.github.io/Muhammad-Zeeshan/" target="_blank"><i class="fas fa-globe"></i> Live</a>
+                        <a href="https://github.com/Zeeshan1616/Muhammad-Zeeshan" target="_blank"><i class="fab fa-github"></i> Source</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-group-title">Programming</div>
+                    <div class="skill-group-list">C++, Java, Python, SQL</div>
+                </div>
+                <div>
+                    <div class="skill-group-title">Web Development</div>
+                    <div class="skill-group-list">HTML5, CSS3, JavaScript</div>
+                </div>
+                <div>
+                    <div class="skill-group-title">Core Concepts</div>
+                    <div class="skill-group-list">OOP, Data Structures, Algorithms</div>
+                </div>
+                <div>
+                    <div class="skill-group-title">Tools & Platforms</div>
+                    <div class="skill-group-list">Git, GitHub, VS Code, Linux</div>
+                </div>
+                <div>
+                    <div class="skill-group-title">Soft Skills</div>
+                    <div class="skill-group-list">Communication, Leadership, Teamwork</div>
+                </div>
+                <div>
+                    <div class="skill-group-title">Exploring</div>
+                    <div class="skill-group-list">AI/ML, Data Science</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Certifications (14)</div>
+            <div class="certs-grid">
+                <div class="cert-item"><span class="cert-dot ai"></span> Introduction to AI</div>
+                <div class="cert-item"><span class="cert-dot ai"></span> Introduction to Modern AI</div>
+                <div class="cert-item"><span class="cert-dot ai"></span> AI Fluency</div>
+                <div class="cert-item"><span class="cert-dot ai"></span> AI for Beginners</div>
+                <div class="cert-item"><span class="cert-dot ai"></span> Google AI Essentials</div>
+                <div class="cert-item"><span class="cert-dot ml"></span> Machine Learning for Beginners</div>
+                <div class="cert-item"><span class="cert-dot ml"></span> Basics of ML Algorithms</div>
+                <div class="cert-item"><span class="cert-dot ds"></span> Basics of Data Science</div>
+                <div class="cert-item"><span class="cert-dot sql"></span> Introduction to SQL</div>
+                <div class="cert-item"><span class="cert-dot sql"></span> SQL Statements & Indexes</div>
+                <div class="cert-item"><span class="cert-dot code"></span> Introduction to Python</div>
+                <div class="cert-item"><span class="cert-dot code"></span> Introduction to HTML</div>
+                <div class="cert-item"><span class="cert-dot code"></span> Introduction to CSS</div>
+                <div class="cert-item"><span class="cert-dot code"></span> Claude Code in Action</div>
+                <div class="cert-item"><span class="cert-dot lead"></span> Effective Leadership</div>
+                <div class="cert-item"><span class="cert-dot lead"></span> Communication Skills</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
