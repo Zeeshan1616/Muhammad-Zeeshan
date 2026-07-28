@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 company: "Arch Technologies",
                 role: "Data Science Intern",
-                type: "On-site",
+                type: "Virtual",
                 year: "2026",
                 status: "Upcoming",
                 domain: "Data Science"
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Internships (general)
         if (/internship|intern|experience|work experience|employment/i.test(lower)) {
-            return `💼 **Internships:**\n\n1️⃣ **CodeAlpha** - Java Programming Intern (Virtual, 2026) ✅ Completed\n2️⃣ **DecodeLabs** - Python Programming Intern (Virtual, 2026) ✅ Completed\n3️⃣ **Arch Technologies** - Data Science Intern (On-site, 2026) ⏳ Upcoming\n\nAsk me about any specific internship for details!`;
+            return `💼 **Internships:**\n\n1️⃣ **CodeAlpha** - Java Programming Intern (Virtual, 2026) ✅ Completed\n2️⃣ **DecodeLabs** - Python Programming Intern (Virtual, 2026) ✅ Completed\n3️⃣ **Arch Technologies** - Data Science Intern (Virtual, 2026) ⏳ Upcoming\n\nAsk me about any specific internship for details!`;
         }
 
         // CodeAlpha
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Arch Technologies
         if (/arch|arch technologies/i.test(lower)) {
-            return `💼 **Arch Technologies Internship:**\n\n🏢 Company: Arch Technologies\n📋 Role: Data Science Intern\n📍 Type: On-site\n📅 Year: 2026\n⏳ Status: Upcoming\n\nThis internship is in the Data Science domain and will provide hands-on experience with real-world data science projects.`;
+            return `💼 **Arch Technologies Internship:**\n\n🏢 Company: Arch Technologies\n📋 Role: Data Science Intern\n📍 Type: Virtual\n📅 Year: 2026\n⏳ Status: Upcoming\n\nThis internship is in the Data Science domain and will provide hands-on experience with real-world data science projects.`;
         }
 
         // Projects (general)
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Location
         if (/location|where|city|country|address|live/i.test(lower)) {
-            return `📍 **Location:**\n\nZeeshan is based in ${knowledge.location}. He has completed virtual internships remotely and is preparing for an on-site internship at Arch Technologies.`;
+            return `📍 **Location:**\n\nZeeshan is based in ${knowledge.location}. He has completed all his internships remotely.`;
         }
 
         // Quick replies
