@@ -226,8 +226,8 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    overflow: visible;
-    padding: 100px 0 60px;
+    overflow: hidden;
+    padding: 88px 0 0;
     background: linear-gradient(to bottom, var(--bg-primary, #0a0a0a) 85%, transparent 100%);
 }
 
@@ -317,16 +317,16 @@ body {
 }
 
 .hero-container {
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 32px;
     display: grid;
-    grid-template-columns: 5fr 1fr;
-    gap: 0;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 32px;
     align-items: center;
     position: relative;
     z-index: 1;
-    height: 100%;
+    min-height: calc(100vh - 88px);
     width: 100%;
 }
 
@@ -354,9 +354,10 @@ body {
 
 
 .hero-content {
-    padding: 0 60px 0 0;
-    max-width: 320px;
-    margin-left: auto;
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    padding-bottom: 48px;
 }
 
 .hero-title {
@@ -478,10 +479,10 @@ body {
 .hero-image-wrapper {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
     align-self: stretch;
-    overflow: hidden;
+    min-width: 0;
 }
 
 .hero-image-wrapper::after {
@@ -490,38 +491,43 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
-    background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%);
+    height: 170px;
+    background: linear-gradient(to top, var(--bg-primary) 8%, rgba(10, 10, 10, 0.72) 35%, transparent 100%);
     pointer-events: none;
-    z-index: 2;
+    z-index: 3;
 }
 
 .image-glow {
     position: absolute;
-    width: 1100px;
-    height: 1100px;
+    width: 680px;
+    height: 680px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(122, 172, 212, 0.04), transparent 65%);
+    background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
     pointer-events: none;
     z-index: 0;
-    top: 50%;
-    left: 50%;
+    top: 46%;
+    left: 54%;
     transform: translate(-50%, -50%);
 }
 
 .hero-image-container {
     position: relative;
     width: 100%;
-    max-width: none;
+    height: 100%;
     z-index: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: flex-end;
+    overflow: hidden;
 }
 
 .hero-image {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: calc(100% + 84px);
+    max-width: none;
+    object-fit: contain;
+    object-position: center bottom;
+    margin-right: -6%;
     filter: grayscale(100%) saturate(0) brightness(0.85) drop-shadow(0 25px 80px rgba(0, 0, 0, 0.9));
     transition: filter 0.6s ease, transform 0.6s ease;
     display: block;
@@ -529,7 +535,7 @@ body {
 
 .hero-image-container:hover .hero-image {
     filter: grayscale(0%) saturate(1) brightness(1.05) drop-shadow(0 35px 90px rgba(122, 172, 212, 0.06));
-    transform: scale(1.02);
+    transform: scale(1.015);
 }
 
 .image-frame {
@@ -2402,11 +2408,16 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 40px;
+        min-height: auto;
+        padding: 0 24px;
     }
+    .hero-content { max-width: 680px; margin: 0 auto; padding-bottom: 0; }
     .hero-description { margin: 0 auto 32px; }
     .hero-buttons { justify-content: center; }
     .hero-stats { justify-content: center; }
-    .hero-image-wrapper { justify-content: center; }
+    .hero-image-wrapper { justify-content: center; min-height: 480px; }
+    .hero-image-container { height: 480px; max-width: 680px; justify-content: center; }
+    .hero-image { height: 100%; margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
@@ -2451,6 +2462,9 @@ body {
 
     /* HERO */
     .hero { padding: 100px 0 60px; min-height: auto; }
+    .hero-container { padding: 0 20px; }
+    .hero-image-wrapper { min-height: 390px; }
+    .hero-image-container { height: 390px; }
     .name { font-size: 2.2rem; }
     .greeting { font-size: 1rem; }
     .hero-subtitle { font-size: 1rem; }
