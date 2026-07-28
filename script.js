@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(255, 255, 255, ' + alpha + ')';
+                ctx.fillStyle = 'rgba(122, 172, 212, ' + alpha + ')';
                 ctx.fill();
             }
         }
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacity + ')';
+                        ctx.strokeStyle = 'rgba(122, 172, 212, ' + opacity + ')';
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
