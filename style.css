@@ -321,8 +321,8 @@ body {
     margin: 0 auto;
     padding: 0 24px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -472,14 +472,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    min-height: 70vh;
 }
 
 .image-glow {
     position: absolute;
-    width: 520px;
-    height: 520px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
+    background: radial-gradient(circle, rgba(122, 172, 212, 0.07), transparent 65%);
     pointer-events: none;
     z-index: 0;
     top: 50%;
@@ -489,7 +491,8 @@ body {
 
 .hero-image-container {
     position: relative;
-    width: min(420px, 45vw);
+    width: 100%;
+    max-width: 520px;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -505,62 +508,19 @@ body {
 .hero-image {
     width: 100%;
     height: auto;
-    max-height: min(560px, 80vh);
+    max-height: 80vh;
     object-fit: contain;
-    filter: drop-shadow(0 12px 50px rgba(0, 0, 0, 0.7));
-    transition: filter 0.5s ease, transform 0.5s ease;
+    filter: grayscale(100%) saturate(0) brightness(0.9) drop-shadow(0 16px 60px rgba(0, 0, 0, 0.8));
+    transition: filter 0.6s ease, transform 0.6s ease;
 }
 
 .hero-image-container:hover .hero-image {
-    filter: drop-shadow(0 20px 60px rgba(122, 172, 212, 0.12));
-    transform: scale(1.03);
+    filter: grayscale(0%) saturate(1) brightness(1.05) drop-shadow(0 20px 70px rgba(122, 172, 212, 0.1));
+    transform: scale(1.02);
 }
 
 .image-frame {
     display: none;
-}
-
-
-.floating-badge {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    color: #ccc;
-    z-index: 2;
-    animation: floatBadge 5s ease-in-out infinite;
-    opacity: 0.85;
-    background: var(--accent-color-dim);
-    border: 1px solid rgba(122, 172, 212, 0.25);
-    backdrop-filter: blur(4px);
-    color: var(--accent-color);
-}
-
-.badge-1 {
-    top: 20%;
-    right: 5%;
-    animation-delay: 0s;
-}
-
-.badge-2 {
-    bottom: 25%;
-    left: 5%;
-    animation-delay: 1s;
-}
-
-.badge-3 {
-    bottom: 5%;
-    right: 15%;
-    animation-delay: 2s;
-}
-
-@keyframes floatBadge {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
 }
 
 .scroll-indicator {
