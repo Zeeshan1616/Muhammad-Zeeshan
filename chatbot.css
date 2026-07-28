@@ -11,17 +11,19 @@
   height: 60px;
   border-radius: 50%;
   background: #1a1a1a;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.12);
   cursor: pointer;
   z-index: 999;
-  transition: transform 0.3s, border-color 0.3s;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   padding: 0;
   overflow: visible;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .zee-toggle:hover {
   transform: scale(1.05);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.6);
 }
 
 .zee-toggle-avatar {
@@ -41,6 +43,7 @@
   background: var(--text-muted, #555);
   border: 2px solid #1a1a1a;
   z-index: 1001;
+  animation: pulse-dot 2s ease-in-out infinite;
 }
 
 /* Chatbot Window */
@@ -50,7 +53,7 @@
   right: 24px;
   width: 380px;
   height: 520px;
-  background: #141414;
+  background: #111;
   border: 1px solid #2a2a2a;
   border-radius: 20px;
   overflow: hidden;
@@ -61,7 +64,7 @@
   opacity: 0;
   transform: translateY(20px) scale(0.95);
   pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .zee-chatbot.zee-open {
@@ -73,7 +76,7 @@
 /* Header */
 .zee-header {
   padding: 18px 20px;
-  background: #1a1a1a;
+  background: #181818;
   border-bottom: 1px solid #2a2a2a;
   display: flex;
   align-items: center;
@@ -187,16 +190,16 @@
 }
 
 .zee-bot-msg {
-  background: #1e1e1e;
-  color: var(--text-secondary, #a0a0a0);
+  background: #1c1c1c;
+  color: #e0e0e0;
   border-bottom-left-radius: 4px;
 }
 
 .zee-user-msg {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-primary, #f5f5f5);
+  background: rgba(255, 255, 255, 0.10);
+  color: var(--text-primary, #fff);
   border-bottom-right-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Typing Indicator */
@@ -233,19 +236,20 @@
 }
 
 .zee-quick-btn {
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 500;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-secondary, #a0a0a0);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ccc;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
 .zee-quick-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Input Area */
@@ -283,25 +287,27 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: var(--text-muted, #555);
+  background: #aaa;
   border: none;
-  color: #0d0d0d;
+  color: #0a0a0a;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
   flex-shrink: 0;
   font-size: 0.85rem;
 }
 
 .zee-send:hover {
-  background: var(--text-secondary, #a0a0a0);
+  background: #ddd;
+  transform: scale(1.05);
 }
 
 .zee-send:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* Animations */
@@ -323,6 +329,11 @@
   30% {
     transform: translateY(-6px);
   }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 /* Responsive */

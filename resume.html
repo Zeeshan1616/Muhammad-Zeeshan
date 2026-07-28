@@ -10,14 +10,13 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #0d0d0d;
+            --bg: #0a0a0a;
             --card: #111111;
             --border: #1e1e1e;
             --text: #e0e0e0;
             --muted: #888888;
-            --cyan: #00e5ff;
-            --green: #76ff03;
-            --pink: #e040fb;
+            --accent: #ffffff;
+            --accent2: #b0b0b0;
         }
 
         body {
@@ -41,7 +40,7 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(13, 13, 13, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             padding: 12px 50px;
@@ -56,8 +55,8 @@
         }
 
         .download-btn {
-            background: linear-gradient(135deg, var(--cyan), var(--green));
-            color: #0d0d0d;
+            background: var(--accent);
+            color: #0a0a0a;
             border: none;
             padding: 8px 24px;
             border-radius: 8px;
@@ -70,7 +69,7 @@
 
         .download-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
         }
 
         .resume-page { padding-top: 80px; }
@@ -85,10 +84,7 @@
         .header h1 {
             font-size: 2.4rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--cyan), var(--green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--accent);
             letter-spacing: -1px;
         }
 
@@ -116,7 +112,7 @@
             gap: 6px;
         }
 
-        .contact-row a { color: var(--cyan); }
+        .contact-row a { color: var(--accent); }
         .contact-row a:hover { text-decoration: underline; }
         .contact-row i { font-size: 0.75rem; }
 
@@ -127,7 +123,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--cyan);
+            color: var(--accent);
             margin-bottom: 14px;
             display: flex;
             align-items: center;
@@ -151,7 +147,7 @@
         .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
         .item-title { font-weight: 700; font-size: 0.95rem; color: #fff; }
         .item-date { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
-        .item-sub { font-size: 0.85rem; color: var(--green); font-weight: 500; margin-bottom: 4px; }
+        .item-sub { font-size: 0.85rem; color: var(--accent2); font-weight: 500; margin-bottom: 4px; }
         .item-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
 
         .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
@@ -159,9 +155,9 @@
             font-size: 0.7rem;
             padding: 3px 10px;
             border-radius: 20px;
-            background: rgba(0, 229, 255, 0.08);
-            color: var(--cyan);
-            border: 1px solid rgba(0, 229, 255, 0.15);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--accent2);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             font-weight: 500;
         }
 
@@ -187,12 +183,12 @@
             flex-shrink: 0;
         }
 
-        .cert-dot.ai { background: var(--cyan); }
-        .cert-dot.ml { background: var(--green); }
-        .cert-dot.ds { background: var(--pink); }
-        .cert-dot.sql { background: #ff9800; }
-        .cert-dot.code { background: #7c4dff; }
-        .cert-dot.lead { background: #ff5252; }
+        .cert-dot.ai { background: #aaa; }
+        .cert-dot.ml { background: #888; }
+        .cert-dot.ds { background: #666; }
+        .cert-dot.sql { background: #999; }
+        .cert-dot.code { background: #bbb; }
+        .cert-dot.lead { background: #777; }
 
         .skills-grid {
             display: grid;
@@ -203,7 +199,7 @@
         .skill-group-title {
             font-size: 0.78rem;
             font-weight: 600;
-            color: var(--green);
+            color: var(--accent2);
             margin-bottom: 6px;
         }
 
@@ -222,7 +218,7 @@
 
         .link-list a {
             font-size: 0.78rem;
-            color: var(--cyan);
+            color: var(--accent);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -235,15 +231,15 @@
             body { background: #fff; color: #222; }
             .download-bar { display: none !important; }
             .resume-page { padding: 20px 40px; max-width: 100%; }
-            .header h1 { -webkit-text-fill-color: #0d7377; background: none; }
-            .section-title { color: #0d7377; }
+            .header h1 { -webkit-text-fill-color: #333; color: #333; }
+            .section-title { color: #555; }
             .section-title::after { background: #ccc; }
-            .item-sub { color: #2e7d32; }
+            .item-sub { color: #555; }
             .item-desc, .contact-row span { color: #555; }
-            .tag { border-color: #ccc; color: #333; background: #f5f5f5; }
+            .tag { border-color: #ccc; color: #666; background: #f5f5f5; }
             .cert-dot { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-            .contact-row a { color: #0d7377; }
-            .link-list a { color: #0d7377; }
+            .contact-row a { color: #333; }
+            .link-list a { color: #333; }
         }
 
         @media (max-width: 700px) {

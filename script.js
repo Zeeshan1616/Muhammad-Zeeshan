@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseY = this.y;
                 this.vx = (Math.random() - 0.5) * 0.3;
                 this.vy = (Math.random() - 0.5) * 0.3;
-                this.radius = Math.random() * 1.8 + 0.8;
+                this.radius = Math.random() * 2.2 + 1.0;
                 this.driftAngle = Math.random() * Math.PI * 2;
                 this.driftSpeed = (Math.random() * 0.002 + 0.001);
                 this.driftRadius = Math.random() * 20 + 10;
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
             draw() {
                 const pulse = 0.8 + Math.sin(this.pulsePhase) * 0.2;
                 const r = this.radius * pulse;
-                const alpha = 0.2 * pulse;
+                const alpha = 0.25 * pulse;
 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function initParticles() {
-            const count = Math.min(Math.floor((canvas.width * heroSection.offsetHeight) / 14000), 100);
+            const count = Math.min(Math.floor((canvas.width * heroSection.offsetHeight) / 10000), 120);
             particles = [];
             for (let i = 0; i < count; i++) {
                 particles.push(new Particle());
@@ -106,11 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-                    const maxConn = 130;
+                    const maxConn = 150;
 
                     if (dist < maxConn) {
                         const t = 1 - dist / maxConn;
-                        const opacity = t * t * 0.08;
+                        const opacity = t * t * 0.12;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = this.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Opening Email...';
-            btn.style.background = '#76ff03';
+            btn.style.background = '#ffffff';
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.style.background = '';
