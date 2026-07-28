@@ -472,16 +472,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    min-height: 70vh;
 }
 
 .image-glow {
     position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(122, 172, 212, 0.07), transparent 65%);
+    background: radial-gradient(circle, rgba(122, 172, 212, 0.06), transparent 65%);
     pointer-events: none;
     z-index: 0;
     top: 50%;
@@ -492,23 +490,16 @@ body {
 .hero-image-container {
     position: relative;
     width: 100%;
-    max-width: 520px;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: floatImage 6s ease-in-out infinite;
-}
-
-@keyframes floatImage {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
 }
 
 .hero-image {
     width: 100%;
     height: auto;
-    max-height: 80vh;
+    max-height: 90vh;
     object-fit: contain;
     filter: grayscale(100%) saturate(0) brightness(0.9) drop-shadow(0 16px 60px rgba(0, 0, 0, 0.8));
     transition: filter 0.6s ease, transform 0.6s ease;
