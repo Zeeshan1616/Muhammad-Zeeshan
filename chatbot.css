@@ -11,19 +11,17 @@
   height: 60px;
   border-radius: 50%;
   background: #1a1a1a;
-  border: 2px solid rgba(0, 229, 255, 0.3);
-  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   z-index: 999;
-  animation: pulseRing 2s infinite;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, border-color 0.3s;
   padding: 0;
   overflow: visible;
 }
 
 .zee-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.35);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .zee-toggle-avatar {
@@ -75,7 +73,7 @@
 /* Header */
 .zee-header {
   padding: 18px 20px;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(118, 255, 3, 0.04));
+  background: #1a1a1a;
   border-bottom: 1px solid #2a2a2a;
   display: flex;
   align-items: center;
@@ -88,7 +86,7 @@
   height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(0, 229, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .zee-header-info {
@@ -248,7 +246,6 @@
 
 .zee-quick-btn:hover {
   background: rgba(0, 229, 255, 0.12);
-  transform: translateY(-1px);
 }
 
 /* Input Area */
@@ -325,15 +322,6 @@
   }
   30% {
     transform: translateY(-6px);
-  }
-}
-
-@keyframes pulseRing {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 0 12px rgba(0, 229, 255, 0);
   }
 }
 

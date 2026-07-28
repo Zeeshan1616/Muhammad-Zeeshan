@@ -78,18 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             draw() {
-                const pulse = 0.7 + Math.sin(this.pulsePhase) * 0.3;
+                const pulse = 0.8 + Math.sin(this.pulsePhase) * 0.2;
                 const r = this.radius * pulse;
-                const alpha = 0.45 * pulse;
-
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, r + 1.5, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 229, 255, ' + (alpha * 0.15) + ')';
-                ctx.fill();
+                const alpha = 0.2 * pulse;
 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 229, 255, ' + alpha + ')';
+                ctx.fillStyle = 'rgba(255, 255, 255, ' + alpha + ')';
                 ctx.fill();
             }
         }
@@ -115,12 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (dist < maxConn) {
                         const t = 1 - dist / maxConn;
-                        const opacity = t * t * 0.22;
+                        const opacity = t * t * 0.08;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = 'rgba(0, 229, 255, ' + opacity + ')';
-                        ctx.lineWidth = 0.5 + t * 0.3;
+                        ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacity + ')';
+                        ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
                 }
@@ -136,17 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (dist < maxMouse && dist > 0) {
                     const t = 1 - dist / maxMouse;
-                    const opacity = t * t * 0.35;
-
-                    const grad = ctx.createLinearGradient(particles[i].x, particles[i].y, mouse.x, mouse.y);
-                    grad.addColorStop(0, 'rgba(0, 229, 255, ' + opacity + ')');
-                    grad.addColorStop(1, 'rgba(118, 255, 3, ' + (opacity * 0.8) + ')');
+                    const opacity = t * t * 0.12;
 
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = grad;
-                    ctx.lineWidth = 0.6 + t * 0.6;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, ' + opacity + ')';
+                    ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
             }
