@@ -357,7 +357,7 @@ body {
     position: relative;
     z-index: 2;
     max-width: 640px;
-    padding-top: 18px;
+    padding-top: 44px;
 }
 
 .hero-title {
@@ -523,7 +523,7 @@ body {
 
 .hero-image {
     width: auto;
-    height: calc(35% + 14px);
+    height: calc(21% + 8px);
     max-width: none;
     object-fit: contain;
     object-position: center top;
@@ -2417,7 +2417,7 @@ body {
     .hero-stats { justify-content: center; }
     .hero-image-wrapper { justify-content: center; min-height: 480px; }
     .hero-image-container { height: 480px; max-width: 680px; justify-content: center; }
-    .hero-image { height: calc(35% + 14px); margin-right: 0; }
+    .hero-image { height: calc(21% + 8px); margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
