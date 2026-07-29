@@ -23,32 +23,18 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    opacity: 1;
-    animation: introFadeOut 0.8s ease-in-out 2.2s forwards;
 }
 
 .intro-name {
     font-family: 'RusticRoadway', cursive;
     font-size: clamp(2rem, 6vw, 5rem);
     color: #ffffff;
-    opacity: 0;
-    animation: introNameIn 0.8s ease-out 0.3s forwards, introNameOut 0.8s ease-in 1.8s forwards;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
-@keyframes introNameIn {
-    0% { opacity: 0; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes introNameOut {
-    0% { opacity: 1; transform: scale(1); }
-    100% { opacity: 0; transform: scale(1.05); }
-}
-
-@keyframes introFadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
+.intro-name span {
+    display: inline-block;
 }
 
 :root {

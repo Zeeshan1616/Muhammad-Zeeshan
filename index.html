@@ -212,7 +212,7 @@
 <body>
     <!-- Intro Screen -->
     <div class="intro-screen" id="introScreen">
-        <div class="intro-name">Muhammad Zeeshan</div>
+        <div class="intro-name" id="introName"></div>
     </div>
 
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
@@ -1480,9 +1480,44 @@ zeeshan = MuhammadZeeshan()
     </div>
 
     <script>
-        // Remove intro screen after animation completes
         document.addEventListener('DOMContentLoaded', function() {
+            const introName = document.getElementById('introName');
             const introScreen = document.getElementById('introScreen');
+            const text = 'Muhammad Zeeshan';
+            const letterDelay = 100;
+
+            // Create spans for each letter
+            text.split('').forEach(function(char, i) {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.opacity = '0';
+                span.style.display = 'inline-block';
+                span.style.transition = 'opacity 0.1s ease';
+                introName.appendChild(span);
+            });
+
+            const letters = introName.querySelectorAll('span');
+
+            // Write out each letter
+            letters.forEach(function(letter, i) {
+                setTimeout(function() {
+                    letter.style.opacity = '1';
+                }, 300 + i * letterDelay);
+            });
+
+            // Fade out name
+            setTimeout(function() {
+                introName.style.transition = 'opacity 0.8s ease';
+                introName.style.opacity = '0';
+            }, 2000);
+
+            // Fade out screen
+            setTimeout(function() {
+                introScreen.style.transition = 'opacity 0.8s ease';
+                introScreen.style.opacity = '0';
+            }, 2400);
+
+            // Remove from DOM
             setTimeout(function() {
                 introScreen.remove();
             }, 3200);
