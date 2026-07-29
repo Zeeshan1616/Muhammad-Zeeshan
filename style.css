@@ -3,6 +3,14 @@
    Dark Professional Theme
    ======================================== */
 
+/* Local Font */
+@font-face {
+    font-family: 'RusticRoadway';
+    src: url('RusticRoadway.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Intro Screen */
 .intro-screen {
     position: fixed;
@@ -20,7 +28,7 @@
 }
 
 .intro-name {
-    font-family: 'Rustic Roadway', cursive;
+    font-family: 'RusticRoadway', cursive;
     font-size: clamp(2rem, 6vw, 5rem);
     color: #ffffff;
     opacity: 0;
