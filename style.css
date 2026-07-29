@@ -501,8 +501,8 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 560px;
-    height: 560px;
+    width: 620px;
+    height: 620px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
     pointer-events: none;
@@ -515,7 +515,7 @@ body {
 .hero-image-container {
     position: relative;
     width: min(100%, 500px);
-    height: 340px;
+    height: 400px;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -525,7 +525,7 @@ body {
 
 .hero-image {
     width: auto;
-    height: 340px;
+    height: 400px;
     max-width: none;
     object-fit: contain;
     object-position: center top;
@@ -2421,8 +2421,8 @@ body {
     .hero-buttons { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-image-wrapper { justify-content: center; min-height: 0; }
-    .hero-image-container { height: 250px; max-width: 680px; justify-content: center; }
-    .hero-image { height: 250px; margin-right: 0; }
+    .hero-image-container { height: 290px; max-width: 680px; justify-content: center; }
+    .hero-image { height: 290px; margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
@@ -2469,8 +2469,8 @@ body {
     .hero { padding: 100px 0 48px; min-height: auto; height: auto; }
     .hero-container { padding: 0 20px; }
     .hero-image-wrapper { min-height: 0; }
-    .hero-image-container { height: 210px; }
-    .hero-image { height: 210px; }
+    .hero-image-container { height: 240px; }
+    .hero-image { height: 240px; }
     .name { font-size: 2.2rem; }
     .greeting { font-size: 1rem; }
     .hero-subtitle { font-size: 1rem; }
