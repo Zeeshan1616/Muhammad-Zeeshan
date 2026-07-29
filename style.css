@@ -222,7 +222,7 @@ body {
    HERO SECTION
    ======================================== */
 .hero {
-    min-height: 0;
+    min-height: clamp(560px, 72vh, 680px);
     height: auto;
     display: flex;
     align-items: center;
