@@ -222,7 +222,7 @@ body {
    HERO SECTION
    ======================================== */
 .hero {
-    min-height: clamp(560px, 72vh, 680px);
+    min-height: clamp(728px, 94vh, 884px);
     height: auto;
     display: flex;
     align-items: center;
@@ -360,6 +360,7 @@ body {
     z-index: 2;
     max-width: 640px;
     padding: 0;
+    transform: translateY(32px);
 }
 
 .hero-title {
@@ -501,8 +502,8 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 620px;
-    height: 620px;
+    width: 700px;
+    height: 700px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
     pointer-events: none;
@@ -515,7 +516,7 @@ body {
 .hero-image-container {
     position: relative;
     width: min(100%, 500px);
-    height: 400px;
+    height: 480px;
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -525,7 +526,7 @@ body {
 
 .hero-image {
     width: auto;
-    height: 400px;
+    height: 480px;
     max-width: none;
     object-fit: contain;
     object-position: center top;
@@ -2416,13 +2417,13 @@ body {
         min-height: auto;
         padding: 0 24px;
     }
-    .hero-content { max-width: 680px; margin: 0 auto; padding-bottom: 0; }
+    .hero-content { max-width: 680px; margin: 0 auto; padding-bottom: 0; transform: none; }
     .hero-description { margin: 0 auto 32px; }
     .hero-buttons { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-image-wrapper { justify-content: center; min-height: 0; }
-    .hero-image-container { height: 290px; max-width: 680px; justify-content: center; }
-    .hero-image { height: 290px; margin-right: 0; }
+    .hero-image-container { height: 348px; max-width: 680px; justify-content: center; }
+    .hero-image { height: 348px; margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
@@ -2469,8 +2470,8 @@ body {
     .hero { padding: 100px 0 48px; min-height: auto; height: auto; }
     .hero-container { padding: 0 20px; }
     .hero-image-wrapper { min-height: 0; }
-    .hero-image-container { height: 240px; }
-    .hero-image { height: 240px; }
+    .hero-image-container { height: 288px; }
+    .hero-image { height: 288px; }
     .name { font-size: 2.2rem; }
     .greeting { font-size: 1rem; }
     .hero-subtitle { font-size: 1rem; }
