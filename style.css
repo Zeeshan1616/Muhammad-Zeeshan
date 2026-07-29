@@ -499,8 +499,8 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 620px;
-    height: 620px;
+    width: 580px;
+    height: 580px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
     pointer-events: none;
@@ -512,7 +512,7 @@ body {
 
 .hero-image-container {
     position: relative;
-    width: min(100%, 520px);
+    width: min(100%, 500px);
     height: 100%;
     z-index: 1;
     display: flex;
@@ -523,7 +523,7 @@ body {
 
 .hero-image {
     width: auto;
-    height: calc(100% + 64px);
+    height: calc(100% + 40px);
     max-width: none;
     object-fit: contain;
     object-position: center bottom;
