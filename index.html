@@ -1486,6 +1486,8 @@ zeeshan = MuhammadZeeshan()
             const text = 'Muhammad Zeeshan';
             const letterDelay = 100;
 
+            document.body.classList.add('loading');
+
             // Create spans for each letter
             text.split('').forEach(function(char, i) {
                 const span = document.createElement('span');
@@ -1511,13 +1513,16 @@ zeeshan = MuhammadZeeshan()
                 introName.style.opacity = '0';
             }, 2000);
 
-            // Fade out screen
+            // Fade out screen and reveal content
             setTimeout(function() {
                 introScreen.style.transition = 'opacity 0.8s ease';
                 introScreen.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.8s ease';
+                document.body.style.opacity = '1';
+                document.body.classList.remove('loading');
             }, 2400);
 
-            // Remove from DOM
+            // Remove intro from DOM
             setTimeout(function() {
                 introScreen.remove();
             }, 3200);

@@ -37,6 +37,14 @@
     display: inline-block;
 }
 
+body.loading {
+    overflow: hidden;
+}
+
+body.loading > *:not(.intro-screen) {
+    opacity: 0;
+}
+
 :root {
     --bg-primary: #0a0a0a;
     --bg-secondary: #111111;
