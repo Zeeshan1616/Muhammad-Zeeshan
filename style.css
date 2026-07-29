@@ -482,7 +482,7 @@ body {
     position: relative;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
     align-self: stretch;
     min-width: 0;
 }
@@ -515,11 +515,11 @@ body {
 .hero-image-container {
     position: relative;
     width: min(100%, 500px);
-    height: auto;
+    height: 180px;
     z-index: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     overflow: hidden;
 }
 
@@ -2421,8 +2421,8 @@ body {
     .hero-buttons { justify-content: center; }
     .hero-stats { justify-content: center; }
     .hero-image-wrapper { justify-content: center; min-height: 0; }
-    .hero-image-container { height: auto; max-width: 680px; justify-content: center; }
-    .hero-image { height: 180px; margin-right: 0; }
+    .hero-image-container { height: 110px; max-width: 680px; justify-content: center; }
+    .hero-image { height: 110px; margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
@@ -2469,8 +2469,8 @@ body {
     .hero { padding: 100px 0 48px; min-height: auto; height: auto; }
     .hero-container { padding: 0 20px; }
     .hero-image-wrapper { min-height: 0; }
-    .hero-image-container { height: auto; }
-    .hero-image { height: 150px; }
+    .hero-image-container { height: 90px; }
+    .hero-image { height: 90px; }
     .name { font-size: 2.2rem; }
     .greeting { font-size: 1rem; }
     .hero-subtitle { font-size: 1rem; }
