@@ -499,8 +499,8 @@ body {
 
 .image-glow {
     position: absolute;
-    width: 580px;
-    height: 580px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(122, 172, 212, 0.08), transparent 65%);
     pointer-events: none;
@@ -523,7 +523,7 @@ body {
 
 .hero-image {
     width: auto;
-    height: calc(100% + 40px);
+    height: calc(50% + 20px);
     max-width: none;
     object-fit: contain;
     object-position: center bottom;
@@ -2417,7 +2417,7 @@ body {
     .hero-stats { justify-content: center; }
     .hero-image-wrapper { justify-content: center; min-height: 480px; }
     .hero-image-container { height: 480px; max-width: 680px; justify-content: center; }
-    .hero-image { height: 100%; margin-right: 0; }
+    .hero-image { height: calc(50% + 20px); margin-right: 0; }
     .about-stats { padding: 20px; gap: 12px; }
     .about-stats-items { gap: 24px; }
     .about-stat-number { font-size: 1.5rem; }
