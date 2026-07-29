@@ -204,12 +204,17 @@
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Rustic+Roadway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
+    <!-- Intro Screen -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-name">Muhammad Zeeshan</div>
+    </div>
+
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
             <div class="nav-links">
@@ -1473,5 +1478,15 @@ zeeshan = MuhammadZeeshan()
             </button>
         </div>
     </div>
+
+    <script>
+        // Remove intro screen after animation completes
+        document.addEventListener('DOMContentLoaded', function() {
+            const introScreen = document.getElementById('introScreen');
+            setTimeout(function() {
+                introScreen.remove();
+            }, 3200);
+        });
+    </script>
 </body>
 </html>
