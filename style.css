@@ -528,6 +528,8 @@ body {
     object-fit: contain;
     object-position: center top;
     margin-right: -3%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
     filter: grayscale(100%) saturate(0) brightness(0.85) drop-shadow(0 25px 80px rgba(0, 0, 0, 0.9));
     transition: filter 0.6s ease, transform 0.6s ease;
     display: block;
