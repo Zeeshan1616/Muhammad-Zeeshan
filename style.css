@@ -1937,8 +1937,6 @@ body {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.3);
 }
-    color: var(--accent);
-}
 
 .resume-btn i {
     font-size: 1.1rem;
@@ -2487,9 +2485,7 @@ body {
         width: 100%;
         max-height: 0;
         padding: 0;
-        flex-direction: column;
         border-bottom: 1px solid var(--border-color);
-        max-height: 0;
         overflow: hidden;
         opacity: 0;
         transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.3s ease;
