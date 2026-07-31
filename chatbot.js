@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Password Strength Checker", lang: "Python", github: "github.com/Zeeshan1616/Python/tree/Password-Checker-version-1", desc: "CLI tool that scores passwords on a 5-star scale" },
             { name: "Student Manager", lang: "Python", github: "github.com/Zeeshan1616/Python/tree/Student-Management-System", desc: "Interactive CLI for managing student records" }
         ],
-        certifications: 14,
+        certifications: 16,
         cert_categories: ["AI/ML", "Data Science", "Python", "HTML", "CSS", "SQL", "Leadership", "Communication"]
     };
 
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Who is Zeeshan / About
         if (/who is zeeshan|about zeeshan|tell me about zeeshan|who is muhammad|about muhammad/i.test(lower)) {
-            return `Muhammad Zeeshan is a Computer Systems Engineering student at Mehran University of Engineering and Technology (MUET), Jamshoro. He's passionate about software development, AI/ML, and data science. He has completed multiple virtual internships and built various projects in C++, Java, and Python. He's also certified in 14 courses across different domains!`;
+            return `Muhammad Zeeshan is a Computer Systems Engineering student at Mehran University of Engineering and Technology (MUET), Jamshoro. He's passionate about software development, AI/ML, and data science. He has completed multiple virtual internships and built various projects in C++, Java, and Python. He's also certified in 16 courses across different domains!`;
         }
 
         // Education

@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // COUNTER ANIMATION FOR STATS
     // ========================================
-    const statNumbers = document.querySelectorAll('.stat-number');
+    const statNumbers = document.querySelectorAll('.about-stat-number');
     let statsAnimated = false;
 
     const statsObserver = new IntersectionObserver((entries) => {
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
 
-    const statsContainer = document.querySelector('.hero-stats');
+    const statsContainer = document.querySelector('.about-stats');
     if (statsContainer) statsObserver.observe(statsContainer);
 
     // ========================================
@@ -456,7 +456,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // PAGE LOAD ANIMATION
     // ========================================
-    if (prefersReducedMotion) {
+    if (document.getElementById('introScreen')) {
+        document.body.style.opacity = '1';
+    } else if (prefersReducedMotion) {
         document.body.style.opacity = '1';
     } else {
         document.body.style.opacity = '0';
