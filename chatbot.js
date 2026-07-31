@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const bubble = document.createElement('div');
         bubble.classList.add('zee-msg', 'zee-bot-msg');
-        bubble.innerHTML = text.replace(/\*\*/g, '').replace(/\n/g, '<br>');
+        bubble.innerHTML = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
 
         wrapper.appendChild(avatar);
         wrapper.appendChild(bubble);
