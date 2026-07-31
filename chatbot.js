@@ -299,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapper.appendChild(bubble);
         messages.appendChild(wrapper);
 
+        messages.querySelectorAll('.zee-quick-replies').forEach(el => el.remove());
         const quickReplies = createQuickReplies();
         messages.appendChild(quickReplies);
 

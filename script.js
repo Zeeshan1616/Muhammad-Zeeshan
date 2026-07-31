@@ -327,8 +327,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 const offset = 80;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -351,8 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value || 'Portfolio Contact';
             const message = document.getElementById('message').value;
-            const body = `Name: ${name}%0AEmail: ${email}%0A%0A${message}`;
-            window.location.href = `mailto:mzeeshan44203@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+            const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            window.location.href = `mailto:mzeeshan44203@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             const btn = this.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-check"></i> Opening Email...';
