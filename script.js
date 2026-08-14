@@ -282,22 +282,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     // SKILL BAR ANIMATIONS
     // ========================================
-    const skillBars = document.querySelectorAll('.skill-bar-fill');
+    const skillBarTracks = document.querySelectorAll('.skill-bar-track');
 
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const width = entry.target.getAttribute('data-width');
-                entry.target.style.setProperty('--target-width', width + '%');
+                const fill = entry.target.querySelector('.skill-bar-fill');
+                if (!fill) return;
+                const width = fill.getAttribute('data-width');
+                fill.style.setProperty('--target-width', width + '%');
                 setTimeout(() => {
-                    entry.target.classList.add('animated');
+                    fill.classList.add('animated');
                 }, 200);
                 skillObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.3 });
 
-    skillBars.forEach(bar => skillObserver.observe(bar));
+    skillBarTracks.forEach(track => skillObserver.observe(track));
 
     // ========================================
     // TYPING EFFECT FOR HERO (subtle)
@@ -574,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function applyZoom() {
-        const el = certModalBody.querySelector('img');
+        const el = certModalBody.querySelector('img, iframe');
         if (el) el.style.transform = 'scale(' + currentZoom + ')';
     }
 });

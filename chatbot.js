@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Expense Tracker", lang: "Python", github: "github.com/Zeeshan1616/DecodeLabs-Internship/tree/Task-2", desc: "CLI expense tracker with SQLite persistence and summary reports" },
             { name: "Random Password Generator", lang: "Python", github: "github.com/Zeeshan1616/DecodeLabs-Internship/tree/Task-3", desc: "Cryptographic password generator with entropy calculation" },
             { name: "Password Strength Checker", lang: "Python", github: "github.com/Zeeshan1616/Python/tree/Password-Checker-version-1", desc: "CLI tool that scores passwords on a 5-star scale" },
-            { name: "Student Manager", lang: "Python", github: "github.com/Zeeshan1616/Python/tree/Student-Management-System", desc: "Interactive CLI for managing student records" }
+            { name: "Student Manager", lang: "Python", github: "github.com/Zeeshan1616/Python/tree/Student-Management-System", desc: "Interactive CLI for managing student records" },
+            { name: "Portfolio Website", lang: "HTML/CSS/JS", github: "github.com/Zeeshan1616/Muhammad-Zeeshan", desc: "Responsive dark-mode portfolio with AI chatbot, SEO, and certificate viewer" }
         ],
         certifications: 17,
         cert_categories: ["AI/ML", "Data Science", "Python", "HTML", "CSS", "SQL", "Leadership", "Communication"]
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Projects (general)
         if (/projects?|portfolio|work|what has he built|what did he build/i.test(lower)) {
-            let msg = `🚀 **Projects (8 total):**\n\n`;
+            let msg = `🚀 **Projects (9 total):**\n\n`;
             knowledge.projects.forEach((p, i) => {
                 msg += `${i + 1}️⃣ **${p.name}** (${p.lang})\n   ${p.desc}\n\n`;
             });

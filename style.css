@@ -2743,6 +2743,7 @@ body {
     height: 100%;
     border: none;
     min-height: 500px;
+    transform-origin: center center;
 }
 
 .cert-zoom-controls {

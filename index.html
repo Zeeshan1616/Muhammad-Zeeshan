@@ -179,7 +179,7 @@
                 "name": "What internships has Muhammad Zeeshan completed?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Muhammad Zeeshan has completed 3 internships: Data Science Intern at Arch Technologies, Python Programming Intern, and Java Programming Intern. These internships gave him hands-on experience in data analysis, Python development, and Java application development."
+                    "text": "Muhammad Zeeshan has completed 2 internships: a Python Programming Intern at DecodeLabs and a Java Programming Intern at CodeAlpha. He has also been selected for an upcoming Data Science Internship at Arch Technologies. These internships gave him hands-on experience in data analysis, Python development, and Java application development."
                 }
             },
             {
@@ -215,6 +215,14 @@
     <div class="intro-screen" id="introScreen">
         <div class="intro-name" id="introName"></div>
     </div>
+    <noscript>
+        <style>
+            #introScreen { display: none !important; }
+            body.loading { overflow: auto !important; }
+            body.loading > *:not(.intro-screen) { opacity: 1 !important; }
+            .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 
     <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
@@ -1382,7 +1390,7 @@ zeeshan = MuhammadZeeshan()
                     </div>
                 </div>
                 <div class="contact-form-wrapper animate-on-scroll">
-                    <form class="contact-form" id="contactForm" action="mailto:mzeeshan44203@gmail.com" method="post" enctype="text/plain">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -1412,7 +1420,7 @@ zeeshan = MuhammadZeeshan()
     </main>
 
     <!-- Certificate Modal -->
-    <div class="cert-modal-overlay" id="certModal">
+    <div class="cert-modal-overlay" id="certModal" role="dialog" aria-modal="true" aria-label="Certificate Viewer">
         <div class="cert-modal">
             <div class="cert-modal-header">
                 <div>
