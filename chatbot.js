@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // LinkedIn
         if (/linkedin|linked in|professional network/i.test(lower)) {
-            return `💼 **LinkedIn Profile:**\n\n🔗 ${knowledge.linkedin}\n\nZeeshan has an impressive network with 2,244 connections and 2.4K+ followers on LinkedIn!`;
+            return `💼 **LinkedIn Profile:**\n\n🔗 ${knowledge.linkedin}\n\nZeeshan has an impressive network with 2.5K+ connections and 2.5K+ followers on LinkedIn!`;
         }
 
         // GitHub
